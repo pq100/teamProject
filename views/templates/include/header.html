@@ -15,6 +15,7 @@
             align-items: center;
             padding: 0 20px;
             color: black;
+            background-color: rgba(0, 0, 0, 0);
         }
         nav {
             flex-grow: 1;
@@ -61,7 +62,7 @@
     </nav>
     <div class="auth-links">
         {% if 'logined_uid' not in request.session %}
-            <a href="/member/join">Create an account</a>
+            <a href="/member/join">Create an account / </a>
             <a href="/member/login">Sign in</a>
         {% else %}
             <a href="/member/logout">Logout</a>

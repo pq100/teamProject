@@ -1,134 +1,122 @@
 {% extends 'include/base.html' %}
 
 {% block title %}
-User Management
+    User Management
 {% endblock %}
 
 {% block style %}
-<style>
-    .user-management-page {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
-    }
-    .user-management-page h1 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-    }
-    .user-management-page a.back-to-dashboard {
-        display: inline-block;
-        margin-bottom: 20px;
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        text-align: center;
-    }
-    .user-management-page a.back-to-dashboard:hover {
-        background-color: #0056b3;
-    }
-    .user-management-page table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .user-management-page table,
-    .user-management-page th,
-    .user-management-page td {
-        border: 1px solid #ccc;
-    }
-    .user-management-page th,
-    .user-management-page td {
-        padding: 12px;
-        text-align: left;
-    }
-    .user-management-page th {
-        background-color: #007bff;
-        color: white;
-    }
-    .user-management-page tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    .user-management-page .action-btns {
-        display: flex;
-        gap: 10px;
-    }
-    .user-management-page .btn {
-        padding: 6px 12px;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    .user-management-page .btn-view {
-        background-color: #17a2b8;
-    }
-    .user-management-page .btn-view:hover {
-        background-color: #138496;
-    }
-    .user-management-page .btn-edit {
-        background-color: #ffc107;
-    }
-    .user-management-page .btn-edit:hover {
-        background-color: #e0a800;
-    }
-    .user-management-page .btn-delete {
-        background-color: #dc3545;
-    }
-    .user-management-page .btn-delete:hover {
-        background-color: #c82333;
-    }
-</style>
+    <style>
+        .user-management-page {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .user-management-page h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .user-management-page a.back-to-dashboard {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .user-management-page a.back-to-dashboard:hover {
+            background-color: #0056b3;
+        }
+        .user-management-page table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .user-management-page table,
+        .user-management-page th,
+        .user-management-page td {
+            border: 1px solid #ccc;
+        }
+        .user-management-page th,
+        .user-management-page td {
+            padding: 12px;
+            text-align: left;
+        }
+        .user-management-page th {
+            background-color: #007bff;
+            color: white;
+        }
+        .user-management-page tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .user-management-page .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+        .user-management-page .btn {
+            padding: 6px 12px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .user-management-page .btn-view {
+            background-color: #17a2b8;
+        }
+        .user-management-page .btn-view:hover {
+            background-color: #138496;
+        }
+        .user-management-page .btn-edit {
+            background-color: #ffc107;
+        }
+        .user-management-page .btn-edit:hover {
+            background-color: #e0a800;
+        }
+        .user-management-page .btn-delete {
+            background-color: #dc3545;
+        }
+        .user-management-page .btn-delete:hover {
+            background-color: #c82333;
+        }
+    </style>
 {% endblock %}
 
 {% block main %}
-<div class="user-management-page">
-    <h1>User Management</h1>
-    <a href="/admin/admin" class="back-to-dashboard">Back to Admin Dashboard</a>
-    <table>
-        <thead>
-        <tr>
-            <th>User ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Sample Data Row -->
-        <tr>
-            <td>U001</td>
-            <td>johndoe</td>
-            <td>johndoe@example.com</td>
-            <td>Admin</td>
-            <td>Active</td>
-            <td class="action-btns">
-                <button class="btn btn-view">View</button>
-                <button class="btn btn-edit">Edit</button>
-                <button class="btn btn-delete">Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>U002</td>
-            <td>janesmith</td>
-            <td>janesmith@example.com</td>
-            <td>User</td>
-            <td>Inactive</td>
-            <td class="action-btns">
-                <button class="btn btn-view">View</button>
-                <button class="btn btn-edit">Edit</button>
-                <button class="btn btn-delete">Delete</button>
-            </td>
-        </tr>
-        <!-- More rows as needed -->
-        </tbody>
-    </table>
-</div>
+    <div class="user-management-page">
+        <h1>User Management</h1>
+        <a href="/admin/admin" class="back-to-dashboard">Back to Admin Dashboard</a>
+        <table>
+            <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in member %}
+                <tr>
+                    <td>{{ user.userid }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ "Admin" if user.mno == 1 else "User" }}</td>
+                    <td>{{ "Active" if user.active else "Inactive" }}</td>
+                    <td class="action-btns">
+                        <a href="/admin/user/view/{{ user.mno }}" class="btn btn-view">View</a>
+                        <a href="/admin/user/edit/{{ user.mno }}" class="btn btn-edit">Edit</a>
+                        <a href="/admin/user/delete/{{ user.mno }}" class="btn btn-delete">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
