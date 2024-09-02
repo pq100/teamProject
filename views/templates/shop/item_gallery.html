@@ -1,9 +1,9 @@
 {% extends 'include/base.html' %}
 
 {% block title %}
-    세미프로젝트
+    세미프로젝트 - SHOP
 {% endblock %}
-<hr>
+
 {% block style %}
     <style>
         body {
@@ -39,12 +39,10 @@
             width: 400px;
             height: 300px;
             background: white;
-            /*border-radius: 8px;*/
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             overflow: hidden;
             position: relative;
             margin: 0 auto;
-            /*bottom: 50px;*/
         }
         .product img {
             width: 100%;
@@ -59,8 +57,6 @@
             color: white;
             font-size: 0.95em;
             margin: 20px 0;
-            text-decoration: none;
-            /*border-radius: 5px;*/
             text-align: center;
             position: absolute;
             top: 15px;
@@ -87,9 +83,9 @@
         .product-button:active {
             background-color: rgba(0, 0, 0, 0.3);
         }
-
     </style>
 {% endblock %}
+
 {% block main %}
     <main>
         <div class="container">
@@ -97,18 +93,15 @@
             <table>
                 <tbody>
                 <tr>
-                    <!-- 상품 1 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu1.jpg" alt="상품 1">
                             <div class="product-info">
                                 <p class="product-price">₩3,300,000</p>
-                                <!-- 상품 제목 클릭 시 /product/1 경로로 이동 -->
                                 <a href="/shop/item_detail/1" class="product-button">상품 제목 1</a>
                             </div>
                         </div>
                     </td>
-                    <!-- 상품 2 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu2.jpg" alt="상품 2">
@@ -120,7 +113,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <!-- 상품 3 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu3.jpg" alt="상품 3">
@@ -130,7 +122,6 @@
                             </div>
                         </div>
                     </td>
-                    <!-- 상품 4 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu4.jpg" alt="상품 4">
@@ -142,7 +133,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <!-- 상품 5 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu5.jpg" alt="상품 5">
@@ -152,7 +142,6 @@
                             </div>
                         </div>
                     </td>
-                    <!-- 상품 6 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu6.jpg" alt="상품 6">
@@ -164,7 +153,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <!-- 상품 7 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu7.jpg" alt="상품 7">
@@ -174,7 +162,6 @@
                             </div>
                         </div>
                     </td>
-                    <!-- 상품 8 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu8.jpg" alt="상품 8">
@@ -186,23 +173,21 @@
                     </td>
                 </tr>
                 <tr>
-                    <!-- 상품 9 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu9.jpg" alt="상품 9">
                             <div class="product-info">
                                 <p class="product-price">₩2,050,000</p>
-                                <a href="#" class="product-button">상품 제목 9</a>
+                                <a href="/shop/item_detail/9" class="product-button">상품 제목 9</a>
                             </div>
                         </div>
                     </td>
-                    <!-- 상품 10 -->
                     <td>
                         <div class="product">
                             <img src="/static/img/gagu10.jpg" alt="상품 10">
                             <div class="product-info">
-                                <a href="#" class="product-button">상품 제목 10</a>
                                 <p class="product-price">₩2,070,000</p>
+                                <a href="/shop/item_detail/10" class="product-button">상품 제목 10</a>
                             </div>
                         </div>
                     </td>
