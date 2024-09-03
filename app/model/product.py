@@ -11,8 +11,8 @@ class Product(Base):
     price = Column(Integer, nullable=False)
     type = Column(String(50), nullable=False)
     qty = Column(Integer, nullable=False, default=0)
-    description = Column(String(100))
-    image_url = Column(String)  # 이미지 URL을 포함한 속성
+    description = Column(String(250))
+    image_url = Column(String(250))  # 이미지 URL을 포함한 속성
     regdate = Column(DateTime, default=datetime.now, nullable=True)
 
     carts = relationship("Cart", back_populates="product")
@@ -27,10 +27,13 @@ class PrdAttach(Base):
     __tablename__ = 'prdattach'
     prdatno = Column(Integer, primary_key=True, autoincrement=True)
     prdno = Column(Integer, ForeignKey('product.prdno'))
-    img1 = Column(String(50), nullable=False)
-    img2 = Column(String(50), nullable=False)
-    img3 = Column(String(50), nullable=False)
-    img4 = Column(String(50), nullable=False)
+    fname = Column(String(50), nullable=False)
+    fsize = Column(Integer, default=0)
+
+    # img1 = Column(String(50), nullable=False)
+    # img2 = Column(String(50), nullable=False)
+    # img3 = Column(String(50), nullable=False)
+    # img4 = Column(String(50), nullable=False)
 
 
 class Cart(Base):

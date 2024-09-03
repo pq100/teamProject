@@ -1,11 +1,15 @@
-from fastapi import APIRouter, Depends
+from typing import List
+
+from fastapi import APIRouter, Request, UploadFile, File
+from fastapi.params import Depends
 from sqlalchemy.orm import Session
-from starlette.requests import Request
 from starlette.responses import HTMLResponse, RedirectResponse
 from starlette.templating import Jinja2Templates
 
 from app.dbfactory import get_db
 from app.model.member import Member
+from app.schema.product import NewProduct
+from app.service.product import ProductService
 
 admin_router = APIRouter()
 templates = Jinja2Templates(directory='views/templates')
@@ -44,3 +48,17 @@ async def mgorder(req: Request):
 @admin_router.get("/rgproduct", response_class=HTMLResponse)
 async def rgproduct(req: Request):
     return templates.TemplateResponse("admin/rgproduct.html", {"request": req})
+
+@admin_router.post('/rgproduct', response_class=HTMLResponse)
+async def rgproductok(req: Request, product: NewProduct = Depends(ProductService.get_product_data),
+                      files: List[UploadFile] = File(...), db: Session = Depends(get_db)):
+    try:
+        print(product)
+        attachs = await ProductService.process_upload(files)
+        print(attachs)
+        if ProductService.insert_product(product, attachs, db):
+            return RedirectResponse('/shop/item_gallery', 303)
+
+    except Exception as ex:
+        print(f'▷▷▷ rgproductok 오류발생 {str(ex)}')
+        return RedirectResponse('/member/error', 303)

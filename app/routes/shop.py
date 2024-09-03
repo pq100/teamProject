@@ -17,8 +17,18 @@ shop_router = APIRouter()
 # member/product/{prdno}
 # admin/product/{prdno}
 @shop_router.get("/item_gallery", response_class=HTMLResponse)
-async def item_gallery(request: Request):
-    return templates.TemplateResponse("shop/item_gallery.html", {"request": request})
+async def item_gallery(request: Request, db: Session = Depends(get_db)):
+    # 모든 상품 목록을 DB에서 가져옵니다.
+    products = db.query(ProductModel).all()
+
+    # 상품의 가격을 리스트로 추출합니다.
+    prices = [product.price for product in products]
+
+    # 템플릿에 필요한 데이터를 전달합니다.
+    return templates.TemplateResponse("shop/item_gallery.html", {
+        "request": request,
+        "prices": prices
+    })
 
 
 @shop_router.get("/item_detail/{prdno}", response_class=HTMLResponse)
@@ -32,4 +42,3 @@ async def item_detail(request: Request, prdno: int, db: Session = Depends(get_db
         "request": request,
         "product": product
     })
-
