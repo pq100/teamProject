@@ -51,7 +51,7 @@
     </style>
 {% endblock %}
 <header class="py-3">
-    <a id="indexh1" href="/" style="text-decoration: none; color: black;">KOCAP</a>
+    <h1>KOCAP</h1>
     <nav>
         <ul class="nav">
             <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
@@ -61,11 +61,13 @@
         </ul>
     </nav>
     <div class="auth-links">
-        {% if 'logined_uid' not in request.session %}
+        {% if 'userid' in request.session %}
+            <a href="/shop/cart">Cart / </a>
+            <a href="/member/myinfo">My info / </a>
+            <a href="/member/logout">Log Out</a>
+        {% else %}
             <a href="/member/join">Create an account / </a>
             <a href="/member/login">Sign in</a>
-        {% else %}
-            <a href="/member/logout">Logout</a>
         {% endif %}
     </div>
 </header>

@@ -93,7 +93,7 @@
     <main>
         <div class="container">
             <div class="product-detail">
-                <img src="/static/img/gagu1.jpg" alt="{{ product.prdname }}">
+                <img src="{{ product.image_url }}" alt="{{ product.prdname }}">
                 <div class="product-info">
                     <h1 class="product-title">{{ product.prdname }}</h1>
                     <p class="product-price">₩{{ "{:,}".format(product.price) }}</p>
@@ -154,8 +154,6 @@
                     alert('구매 과정에서 오류가 발생했습니다.');
                 }
             }
-
-
         </script>
     </main>
 {% endblock %}

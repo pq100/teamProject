@@ -5,16 +5,22 @@ from datetime import datetime
 
 class Product(Base):
     __tablename__ = 'product'
+
     prdno = Column(Integer, primary_key=True, autoincrement=True)
     prdname = Column(String(100), nullable=False)
     price = Column(Integer, nullable=False)
     type = Column(String(50), nullable=False)
     qty = Column(Integer, nullable=False, default=0)
     description = Column(String(100))
+    image_url = Column(String)  # 이미지 URL을 포함한 속성
     regdate = Column(DateTime, default=datetime.now, nullable=True)
 
     carts = relationship("Cart", back_populates="product")
     orders = relationship("Order", back_populates="product")
+
+    def __repr__(self):
+        return f"<Product(prdno={self.prdno}, prdname='{self.prdname}', price={self.price}, image_url='{self.image_url}')>"
+
 
 
 class PrdAttach(Base):
