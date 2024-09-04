@@ -26,7 +26,7 @@ app = FastAPI(lifespan=lifespan)
 app.add_middleware(SessionMiddleware, secret_key='20240822110005')
 
 templates = Jinja2Templates(directory='views/templates')
-app.mount('/static', StaticFiles(directory='views/static'),name='static')
+#app.mount('/static', StaticFiles(directory='views/static'),name='static')
 
 app.include_router(member_router, prefix='/member')
 app.include_router(menu_router, prefix="/menu")
@@ -35,6 +35,7 @@ app.include_router(order_router, prefix='/order')
 app.include_router(cart_router, prefix='/shop')
 app.include_router(cart_router, prefix='/cart')
 app.include_router(admin_router, prefix='/admin')
+
 
 @app.get("/", response_class=HTMLResponse)
 async def index(req: Request):
