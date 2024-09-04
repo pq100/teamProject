@@ -104,20 +104,48 @@
             </thead>
             <tbody>
             {% for product in products %}
-                <tr>
+                <tr id="product-{{ product.prdno }}">
                     <td>{{ product.prdno }}</td>
                     <td>{{ product.prdname }}</td>
                     <td>{{ product.type }}</td>
                     <td>${{ product.price }}</td>
                     <td>{{ product.qty }}</td>
                     <td class="action-btns">
-                        <button class="btn btn-view">보기</button>
+                        <a href="/shop/item_detail/{{ product.prdno }}" class="btn btn-view">보기</a>
                         <button class="btn btn-edit">수정하기</button>
-                        <button class="btn btn-delete">삭제하기</button>
+                        <button class="btn btn-delete" onclick="deleteProduct({{ product.prdno }})">삭제하기</button>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
+
+    <script>
+        async function deleteProduct(prdno) {
+            if (!confirm("정말로 이 상품을 삭제하시겠습니까?")) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/admin/deleteproduct/${prdno}`, {
+                    method: 'DELETE',
+                });
+
+                if (response.ok) {
+                    document.getElementById(`product-${prdno}`).remove();
+                    alert("상품이 성공적으로 삭제되었습니다.");
+                } else {
+                    alert("상품 삭제에 실패했습니다.");
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert("오류가 발생했습니다.");
+            }
+        }
+    </script>
+
+
+
 {% endblock %}
+
