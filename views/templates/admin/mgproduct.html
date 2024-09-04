@@ -1,134 +1,123 @@
 {% extends 'include/base.html' %}
 
 {% block title %}
-Product Management
+    Product Management
 {% endblock %}
 
 {% block style %}
-<style>
-    .product-management-page {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
-    }
-    .product-management-page h1 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-    }
-    .product-management-page a.back-to-dashboard {
-        display: inline-block;
-        margin-bottom: 20px;
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        text-align: center;
-    }
-    .product-management-page a.back-to-dashboard:hover {
-        background-color: #0056b3;
-    }
-    .product-management-page table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .product-management-page table,
-    .product-management-page th,
-    .product-management-page td {
-        border: 1px solid #ccc;
-    }
-    .product-management-page th,
-    .product-management-page td {
-        padding: 12px;
-        text-align: left;
-    }
-    .product-management-page th {
-        background-color: #007bff;
-        color: white;
-    }
-    .product-management-page tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    .product-management-page .action-btns {
-        display: flex;
-        gap: 10px;
-    }
-    .product-management-page .btn {
-        padding: 6px 12px;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    .product-management-page .btn-view {
-        background-color: #17a2b8;
-    }
-    .product-management-page .btn-view:hover {
-        background-color: #138496;
-    }
-    .product-management-page .btn-edit {
-        background-color: #ffc107;
-    }
-    .product-management-page .btn-edit:hover {
-        background-color: #e0a800;
-    }
-    .product-management-page .btn-delete {
-        background-color: #dc3545;
-    }
-    .product-management-page .btn-delete:hover {
-        background-color: #c82333;
-    }
-</style>
+    <!-- (기존의 스타일 유지) -->
+    <style>
+        .product-management-page {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .product-management-page h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .product-management-page a.back-to-dashboard {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .product-management-page a.back-to-dashboard:hover {
+            background-color: #0056b3;
+        }
+        .product-management-page table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-management-page table,
+        .product-management-page th,
+        .product-management-page td {
+            border: 1px solid #ccc;
+        }
+        .product-management-page th,
+        .product-management-page td {
+            padding: 12px;
+            text-align: left;
+        }
+        .product-management-page th {
+            background-color: #007bff;
+            color: white;
+        }
+        .product-management-page tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .product-management-page .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+        .product-management-page .btn {
+            padding: 6px 12px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .product-management-page .btn-view {
+            background-color: #17a2b8;
+        }
+        .product-management-page .btn-view:hover {
+            background-color: #138496;
+        }
+        .product-management-page .btn-edit {
+            background-color: #ffc107;
+        }
+        .product-management-page .btn-edit:hover {
+            background-color: #e0a800;
+        }
+        .product-management-page .btn-delete {
+            background-color: #dc3545;
+        }
+        .product-management-page .btn-delete:hover {
+            background-color: #c82333;
+        }
+    </style>
 {% endblock %}
 
 {% block main %}
-<div class="product-management-page">
-    <h1>상품 관리</h1>
-    <a href="/admin/admin" class="back-to-dashboard">Back to Admin Dashboard</a>
-    <table>
-        <thead>
-        <tr>
-            <th>주문 번호</th>
-            <th>주문 상품</th>
-            <th>카테고리</th>
-            <th>가격</th>
-            <th>개수</th>
-            <th>상태</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Sample Data Row -->
-        <tr>
-            <td>P001</td>
-            <td>Widget A</td>
-            <td>Electronics</td>
-            <td>$99.99</td>
-            <td>50</td>
-            <td class="action-btns">
-                <button class="btn btn-view">View</button>
-                <button class="btn btn-edit">Edit</button>
-                <button class="btn btn-delete">Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>P002</td>
-            <td>Gadget B</td>
-            <td>Home Goods</td>
-            <td>$49.99</td>
-            <td>120</td>
-            <td class="action-btns">
-                <button class="btn btn-view">View</button>
-                <button class="btn btn-edit">Edit</button>
-                <button class="btn btn-delete">Delete</button>
-            </td>
-        </tr>
-        <!-- More rows as needed -->
-        </tbody>
-    </table>
-</div>
+    <div class="product-management-page">
+        <h1>상품 관리</h1>
+        <a href="/admin/admin" class="back-to-dashboard">Back to Admin Dashboard</a>
+        <table>
+            <thead>
+            <tr>
+                <th>주문 번호</th>
+                <th>주문 상품</th>
+                <th>카테고리</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.prdno }}</td>
+                    <td>{{ product.prdname }}</td>
+                    <td>{{ product.type }}</td>
+                    <td>${{ product.price }}</td>
+                    <td>{{ product.qty }}</td>
+                    <td class="action-btns">
+                        <button class="btn btn-view">보기</button>
+                        <button class="btn btn-edit">수정하기</button>
+                        <button class="btn btn-delete">삭제하기</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
