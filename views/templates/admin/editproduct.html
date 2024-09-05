@@ -64,7 +64,6 @@
         }
 
         .button-group button {
-            background-color: #007bff;
             color: #fff;
             border: none;
             padding: 0.75rem 1.5rem;
@@ -74,8 +73,21 @@
             transition: background-color 0.3s ease;
         }
 
-        .button-group button:hover {
-            background-color: #0056b3;
+        .button-group .update-btn {
+            background-color: #e60000; /* 빨간색 */
+        }
+
+        .button-group .update-btn:hover {
+            background-color: #c00000;
+        }
+
+        .button-group .cancel-btn {
+            background-color: #6c757d; /* 회색 */
+            margin-right: 1rem;
+        }
+
+        .button-group .cancel-btn:hover {
+            background-color: #5a6268;
         }
     </style>
 {% endblock %}
@@ -110,7 +122,8 @@
                     <input type="file" name="files" id="imgfile">
                 </div>
                 <div class="button-group">
-                    <button type="submit" id="updatebtn">수정 완료</button>
+                    <button type="button" class="cancel-btn" onclick="window.history.back()">취소하기</button>
+                    <button type="submit" class="update-btn" id="updatebtn">수정 완료</button>
                 </div>
             </form>
         </div>
