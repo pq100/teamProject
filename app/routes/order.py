@@ -81,17 +81,6 @@ def orderok(
     })
 
 
-
-def generate_payment_info(payment_method: str, member: Member):
-    if payment_method == "bank_transfer":
-        return f"무통장 입금 - 계좌번호 : {member.phone} 입금자명 : {member.username}"
-    elif payment_method == "kakao":
-        return "카카오페이"
-    elif payment_method == "naver":
-        return "네이버페이"
-    else:
-        return "기타"
-
 @order_router.get("/order/{omno}", response_class=HTMLResponse)
 def read_order(omno: int, db: Session = Depends(get_db)):
     order = OrderService.get_order(db, omno)
@@ -165,6 +154,7 @@ from fastapi.responses import JSONResponse
 
 router = APIRouter()
 
+
 @router.post("/set-session")
 async def set_session(request: Request):
     try:
@@ -182,4 +172,5 @@ async def set_session(request: Request):
         return JSONResponse(content={"success": True})
     except Exception as e:
         raise HTTPException(status_code=500, detail="Failed to set session")
+
 

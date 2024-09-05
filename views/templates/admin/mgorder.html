@@ -1,134 +1,153 @@
 {% extends 'include/base.html' %}
 
 {% block title %}
-Order Management
+    Order Management
 {% endblock %}
 
 {% block style %}
-<style>
-    .order-management-page {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f4f4f4;
-    }
-    .order-management-page h1 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-    }
-    .order-management-page a.back-to-dashboard {
-        display: inline-block;
-        margin-bottom: 20px;
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        text-align: center;
-    }
-    .order-management-page a.back-to-dashboard:hover {
-        background-color: #0056b3;
-    }
-    .order-management-page table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .order-management-page table,
-    .order-management-page th,
-    .order-management-page td {
-        border: 1px solid #ccc;
-    }
-    .order-management-page th,
-    .order-management-page td {
-        padding: 12px;
-        text-align: left;
-    }
-    .order-management-page th {
-        background-color: #007bff;
-        color: white;
-    }
-    .order-management-page tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    .order-management-page .action-btns {
-        display: flex;
-        gap: 10px;
-    }
-    .order-management-page .btn {
-        padding: 6px 12px;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    .order-management-page .btn-view {
-        background-color: #17a2b8;
-    }
-    .order-management-page .btn-view:hover {
-        background-color: #138496;
-    }
-    .order-management-page .btn-edit {
-        background-color: #ffc107;
-    }
-    .order-management-page .btn-edit:hover {
-        background-color: #e0a800;
-    }
-    .order-management-page .btn-delete {
-        background-color: #dc3545;
-    }
-    .order-management-page .btn-delete:hover {
-        background-color: #c82333;
-    }
-</style>
+    <style>
+        .order-management-page {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .order-management-page h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .order-management-page a.back-to-dashboard {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .order-management-page a.back-to-dashboard:hover {
+            background-color: #0056b3;
+        }
+        .order-management-page table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-management-page table,
+        .order-management-page th,
+        .order-management-page td {
+            border: 1px solid #ccc;
+        }
+        .order-management-page th,
+        .order-management-page td {
+            padding: 12px;
+            text-align: left;
+        }
+        .order-management-page th {
+            background-color: #007bff;
+            color: white;
+        }
+        .order-management-page tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .order-management-page .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+        .order-management-page .btn {
+            padding: 6px 12px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .order-management-page .btn-view {
+            background-color: #17a2b8;
+        }
+        .order-management-page .btn-view:hover {
+            background-color: #138496;
+        }
+        .order-management-page .btn-edit {
+            background-color: #ffc107;
+        }
+        .order-management-page .btn-edit:hover {
+            background-color: #e0a800;
+        }
+        .order-management-page .btn-delete {
+            background-color: #dc3545;
+        }
+        .order-management-page .btn-delete:hover {
+            background-color: #c82333;
+        }
+    </style>
 {% endblock %}
 
 {% block main %}
-<div class="order-management-page">
-    <h1>주문 관리</h1>
-    <a href="/admin/admin" class="back-to-dashboard">Back to Admin Dashboard</a>
-    <table>
-        <thead>
-        <tr>
-            <th>주문 ID</th>
-            <th>고객명</th>
-            <th>고객 데이터</th>
-            <th>배송 상태</th>
-            <th>총 금액</th>
-            <th>상태</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Sample Data Row -->
-        <tr>
-            <td>1001</td>
-            <td>John Doe</td>
-            <td>2024-08-25</td>
-            <td>Shipped</td>
-            <td>$250</td>
-            <td class="action-btns">
-                <button class="btn btn-view">보기</button>
-                <button class="btn btn-edit">수정하기</button>
-                <button class="btn btn-delete">삭제하기</button>
-            </td>
-        </tr>
-        <tr>
-            <td>1002</td>
-            <td>Jane Smith</td>
-            <td>2024-08-26</td>
-            <td>Pending</td>
-            <td>$125</td>
-            <td class="action-btns">
-                <button class="btn btn-view">보기</button>
-                <button class="btn btn-edit">수정하기</button>
-                <button class="btn btn-delete">삭제하기</button>
-            </td>
-        </tr>
-        <!-- More rows as needed -->
-        </tbody>
-    </table>
-</div>
+    <div class="order-management-page">
+        <h1>주문 관리</h1>
+        <a href="/admin/admin" class="back-to-dashboard">Admin Dashboard</a>
+        <table>
+            <thead>
+            <tr>
+                <th>주문 ID</th>
+                <th>고객명</th>
+                <th>주문 날짜</th>
+                <th>배송 주소</th>
+                <th>연락처</th>
+                <th>이메일</th>
+                <th>배송 상태</th>
+                <th>총 금액</th>
+                <th>상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.omno }}</td>
+                    <td>{{ order.member.username }}</td>
+                    <td>{{ order.regdate.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ order.addr }}</td>
+                    <td>{{ order.phone }}</td>
+                    <td>{{ order.member.email }}</td>
+                    <td>
+                        <form action="/admin/updateShippingStatus/{{ order.omno }}" method="post">
+                            <input type="hidden" name="order_id" value="{{ order.omno }}">
+                            <label>
+                                <input type="radio" name="shipping_status" value="배송대기" {% if order.shipping_status == '배송대기' %}checked{% endif %}>
+                                배송대기
+                            </label>
+                            <label>
+                                <input type="radio" name="shipping_status" value="배송 보류" {% if order.shipping_status == '배송 보류' %}checked{% endif %}>
+                                배송 보류
+                            </label>
+                            <label>
+                                <input type="radio" name="shipping_status" value="배송중" {% if order.shipping_status == '배송중' %}checked{% endif %}>
+                                배송중
+                            </label>
+                            <label>
+                                <input type="radio" name="shipping_status" value="배송불가" {% if order.shipping_status == '배송불가' %}checked{% endif %}>
+                                배송불가
+                            </label>
+                            <label>
+                                <input type="radio" name="shipping_status" value="배송완료" {% if order.shipping_status == '배송완료' %}checked{% endif %}>
+                                배송완료
+                            </label>
+                            <button type="submit" class="btn btn-edit">상태 업데이트</button>
+                        </form>
+                    </td>
+                    <td>₩{{ "{:,}".format(order.qty * order.price) }}</td>
+                    <td class="action-btns">
+                        <form action="/admin/deleteorder/{{ order.omno }}" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                            <button class="btn btn-delete" type="submit">삭제하기</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
